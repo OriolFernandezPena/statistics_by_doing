@@ -3,7 +3,7 @@
 **Definition**: Let $X, X_1, X_2, ...$ be a collection of random variables. And let $F, F_1, F_2, ...$ be their corresponding distribution functions. We say that $X_n$ converges to $X$ in distribution iff $$lim_{n \rightarrow \infty} F_n(x) = F(x), \forall x.$$  We denote it by $$X_n \xrightarrow{d} X$$
 
 **Theorem (CLT)** Let $X_1, X_2, ...$ be iid random variables such that $\mathbb{E}(X_i) = \mu < \infty$ and $Var(X_i) = \sigma^2 < \infty$ for all $i$. Let $$
-\bar{X}_n := \frac{1}{n} \sum_{i=1}^{n} X_i
+\bar{X}_ n := \frac{1}{n} \sum_{i=1}^{n} X_i
 $$ and $$
 Z_n := \frac{\bar{X}_n - \mu}{\frac{\sigma}{\sqrt{n}}}.
 $$
