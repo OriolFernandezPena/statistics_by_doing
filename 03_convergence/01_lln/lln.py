@@ -1,5 +1,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import io
+from PIL import Image
+
 
 def sample_mean_convergence(distribution, theopretical_mean, picture_path):
 
@@ -46,11 +49,42 @@ def save_weak_lln_plot(prob, picture_path, title):
     fig.savefig(picture_path)
 
 
-prob = weak_lln(np.random.exponential, 1)
-save_weak_lln_plot(prob, '03_convergence/01_lln/figures/exponential_dist_weak_lln.jpeg', title="Weak LLN - Exponential")
+# prob = weak_lln(np.random.exponential, 1)
+# save_weak_lln_plot(prob, '03_convergence/01_lln/figures/exponential_dist_weak_lln.jpeg', title="Weak LLN - Exponential")
 
 
-prob = weak_lln(lambda size: np.random.binomial(5, 0.2, size), 1)
-save_weak_lln_plot(prob, '03_convergence/01_lln/figures/binomial_dist_weak_lln.jpeg', title="Weak LLN - Binomial")
+# prob = weak_lln(lambda size: np.random.binomial(5, 0.2, size), 1)
+# save_weak_lln_plot(prob, '03_convergence/01_lln/figures/binomial_dist_weak_lln.jpeg', title="Weak LLN - Binomial")
 
+
+def strong_lln(distribution, theoretical_mean: float, image_path: str, n: int = 100000, N: int = 10000):
+    images = []
+    X = distribution(size=(n, N))
+
+    X_bar = np.cumsum(X, axis=0) / np.arange(1, X.shape[0] + 1)[:, None]
+
+    sigma = np.max(np.std(X_bar, axis=1))
+
+    for i in range(0, n, 1000):
+        fig, ax = plt.subplots()
+        ax.hist(X_bar[i, :], bins=30, density=True, alpha=0.6)
+        ax.set_xlim(theoretical_mean - 3*sigma, theoretical_mean + 3*sigma)
+        ax.set_title(f"Convergence at step n = {i}")
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format="png")
+        buffer.seek(0)
+
+        images.append(Image.open(buffer).copy())
+
+        plt.close(fig)
+
+    images[0].save(
+            image_path,
+            save_all=True,
+            append_images=images[1:],
+            duration=300,
+            loop=0
+        )
+
+X_bar = strong_lln(np.random.exponential, 1, '03_convergence/01_lln/figures/strong_lln_exponential.gif')
 

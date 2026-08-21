@@ -31,6 +31,21 @@ With the exponential distribution:
 
 
 Then the binomial:
+
 ![Binomial_weak](./figures/binomial_dist_weak_lln.jpeg)
 
 In both cases it's clear how the probability tends to 0 as the theorem states.
+
+
+What about the strong law? We can a very similar process and see how it converges.
+
+- We perform `N=10000` experiments
+    - In each experiment we get `n` observartions from our chosen distribution (in our case `np.random.exponential`).
+- We check the distribution on each step for all experiments.
+
+With the exponential distribution:
+
+![Exponential_strong](./figures/strong_lln_exponential.gif)
+
+
+We see how the distribution collapses into the point $\mu = 1$ which is the mean.
