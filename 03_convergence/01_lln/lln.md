@@ -22,11 +22,11 @@ $$X_n \xrightarrow{a.s.} X.$$
 
 **Theorem (Weak Law of Large Numbers)**: Let $X_n$ be a sequence of iid random variables such that for every $n$ $\mathbb{E}(X_n) = \mu < \infty$. Let 
 
-$$\bar{X}_ n = \frac{1}{n} \sum_{i=0}^n X_i = \frac{X_1 + X_2 + ... + X_n}{n}.$$
+$$\overline{X}_ n = \frac{1}{n} \sum_{i=0}^n X_i = \frac{X_1 + X_2 + ... + X_n}{n}.$$
 
 Then
 
-$$\bar{X}_ n \xrightarrow{P} \mu.$$
+$$\overline{X}_ n \xrightarrow{P} \mu.$$
 
 This is the same to say that
 
@@ -34,7 +34,7 @@ $$\lim_{n \rightarrow \infty} P(|X_n - \mu| > \varepsilon) = 0, \forall \varepsi
 
 **Theorem (Strong Law of Large Numbers)**: Let $X_n$ be a sequence of iid random variables such that for every $n$ $\mathbb{E}(X_n) = \mu < \infty$. Let
 
-$$\bar{X}_ n = \frac{1}{n} \sum_{i=0}^n X_i = \frac{X_1 + X_2 + ... + X_n}{n}.$$ Then $$\bar{X}_ n \xrightarrow{a.s.} \mu.$$
+$$\overline{X}_ n = \frac{1}{n} \sum_{i=0}^n X_i = \frac{X_1 + X_2 + ... + X_n}{n}.$$ Then $$\overline{X}_ n \xrightarrow{a.s.} \mu.$$
 
 This is the same to say that
 
@@ -47,8 +47,8 @@ Let's start with weak law. We do like this:
 - We perform `N=10000` experiments
     - In each experiment we get `n` observartions from our chosen distribution (in our case `np.random.exponential` and `np.random.binomial`).
     - We do a `cumsum`, i.e., we cumulate each observation on each step.
-    - We compute when the error $|\bar{X_n} - \mu|$
-- We check (compute probability) in how many of the experiments $|\bar{X_n} - \mu| > \varepsilon$, i.e., we compute the `mean`.
+    - We compute when the error $|\overline{X_n} - \mu|$
+- We check (compute probability) in how many of the experiments $|\overline{X_n} - \mu| > \varepsilon$, i.e., we compute the `mean`.
 - Plot probability.
 
 With the exponential distribution:
