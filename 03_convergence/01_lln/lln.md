@@ -16,7 +16,9 @@ this is the same to saying pointwise convergence. We simplify notation and write
 
 $$P(\lim_{n \rightarrow \infty} X_n = X) = 1.$$
 
-We denote it by $$X_n \xrightarrow{a.s.} X.$$
+We denote it by
+
+$$X_n \xrightarrow{a.s.} X.$$
 
 **Theorem (Weak Law of Large Numbers)**: Let $X_n$ be a sequence of iid random variables such that for every $n$ $\mathbb{E}(X_n) = \mu < \infty$. Let 
 
